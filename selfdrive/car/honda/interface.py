@@ -149,6 +149,8 @@ class CarInterface(CarInterfaceBase):
     ret.lateralTuning.pid.kiBP, ret.lateralTuning.pid.kpBP = [[0.], [0.]]
     ret.lateralTuning.pid.kf = 0.00006  # conservative feed-forward
 
+    ret.steerActuatorDelay = 0.1
+
     eps_modified = False
     for fw in car_fw:
       if fw.ecu == "eps" and b"," in fw.fwVersion:
@@ -431,7 +433,6 @@ class CarInterface(CarInterfaceBase):
     ret.stoppingControl = True
     ret.startAccel = 0.5
 
-    ret.steerActuatorDelay = 0.1
     ret.steerRateCost = 0.5
     ret.steerLimitTimer = 0.8
 
